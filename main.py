@@ -1,6 +1,8 @@
+# -*- coding: ascii -*-
+
 import solver
 import display
-import data_structure as struct
+import data_structure as structs
 
 table = ['000608430',
          '308570062',
@@ -12,10 +14,9 @@ table = ['000608430',
          '850041203',
          '037802000']
 
-data_map = struct.convert_table(table)
+data_map = structs.convert_table(table)
 
 # while not is_sudoku_solved(data_map):
 for i in range(10):
     display.print_sudoku(data_map)
     data_map = solver.solve_sudoku(data_map)
-    print '\n'
