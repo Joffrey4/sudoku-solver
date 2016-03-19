@@ -30,23 +30,23 @@ def solve_sudoku(data_map):
                         available_number.remove(data_map[(i, column)])
 
                 # Check the numbers that are in the big cell (3x3) correspond to the cell.
-                if (1, 1) <= (i, j) <= (3, 3):
+                if 1 <= i <= 3 and 1 <= j <= 3:
                     available_number = explore_cell(data_map, available_number, (1, 1))
-                elif (4, 1) <= (i, j) <= (6, 3):
-                    available_number = explore_cell(data_map, available_number, (4, 1))
-                elif (7, 1) <= (i, j) <= (9, 3):
-                    available_number = explore_cell(data_map, available_number, (7, 1))
-                elif (1, 4) <= (i, j) <= (3, 6):
+                elif 1 <= i <= 3 and 4 <= j <= 6:
                     available_number = explore_cell(data_map, available_number, (1, 4))
-                elif (4, 4) <= (i, j) <= (6, 6):
-                    available_number = explore_cell(data_map, available_number, (4, 4))
-                elif (7, 4) <= (i, j) <= (9, 6):
-                    available_number = explore_cell(data_map, available_number, (7, 4))
-                elif (1, 7) <= (i, j) <= (3, 9):
+                elif 1 <= i <= 3 and 7 <= j <= 9:
                     available_number = explore_cell(data_map, available_number, (1, 7))
-                elif (4, 7) <= (i, j) <= (6, 9):
+                elif 4 <= i <= 6 and 1 <= j <= 3:
+                    available_number = explore_cell(data_map, available_number, (4, 1))
+                elif 4 <= i <= 6 and 4 <= j <= 6:
+                    available_number = explore_cell(data_map, available_number, (4, 4))
+                elif 4 <= i <= 6 and 7 <= j <= 9:
                     available_number = explore_cell(data_map, available_number, (4, 7))
-                elif (7, 7) <= (i, j) <= (9, 9):
+                elif 7 <= i <= 9 and 1 <= j <= 3:
+                    available_number = explore_cell(data_map, available_number, (7, 1))
+                elif 7 <= i <= 9 and 4 <= j <= 6:
+                    available_number = explore_cell(data_map, available_number, (7, 4))
+                elif 7 <= i <= 9 and 7 <= j <= 9:
                     available_number = explore_cell(data_map, available_number, (7, 7))
 
                 # In the list, if there's one number left, it's saved.
