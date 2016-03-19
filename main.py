@@ -4,15 +4,15 @@ import solver
 import display
 import data_structure as structs
 
-table = ['000608430',
-         '308570062',
-         '704000800',
-         '205700010',
-         '080000020',
-         '070006508',
-         '009000105',
-         '850041203',
-         '037802000']
+table = ['420007010',
+         '967005000',
+         '008400500',
+         '709020300',
+         '500040006',
+         '002030705',
+         '004008600',
+         '000200981',
+         '090600074']
 
 data_map = structs.convert_table(table)
 
@@ -20,3 +20,4 @@ data_map = structs.convert_table(table)
 for i in range(10):
     display.print_sudoku(data_map)
     data_map = solver.solve_sudoku(data_map)
+    print '\n'
