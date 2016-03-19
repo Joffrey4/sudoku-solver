@@ -4,20 +4,20 @@ import solver
 import display
 import data_structure as structs
 
-table = ['420007010',
-         '967005000',
-         '008400500',
-         '709020300',
-         '500040006',
-         '002030705',
-         '004008600',
-         '000200981',
-         '090600074']
+table = ['020800690',
+         '800009007',
+         '009026000',
+         '090410005',
+         '058000710',
+         '300058060',
+         '000360400',
+         '900200008',
+         '043007050']
 
 data_map = structs.convert_table(table)
 
-# while not is_sudoku_solved(data_map):
-for i in range(10):
-    display.print_sudoku(data_map)
+# Solve the sudoku.
+while not solver.is_sudoku_solved(data_map):
     data_map = solver.solve_sudoku(data_map)
-    print '\n'
+
+display.print_sudoku(data_map)
