@@ -82,3 +82,55 @@ def is_sudoku_solved(data_map):
         return True
     else:
         return False
+
+
+def generate_solving_list(data_map):
+    """Read the sudoku and generate list of number to speed up the solving."""
+
+    # Creation of the data structures.
+    line_data = [[]] * 9
+    column_data = [[]] * 9
+    cell_data = [[]] * 9
+
+    # Take each cell of the sudoku.
+    for line in range(1, 10):
+        for column in range(1, 10):
+
+            # Check if the cell is filled.
+            if (line, column) in data_map:
+
+                # Save its number in the corresponding line_data's list.
+                if not data_map[(line, column)] in line_data[line - 1]:
+                    line_data[line - 1].append(data_map[(line, column)])
+
+                # Save its number in the corresponding column_data's list.
+                if not data_map[(line, column)] in column_data[column - 1]:
+                    column_data[column - 1].append(data_map[(line, column)])
+
+                if 1 <= line <= 3 and 1 <= column <= 3:
+                    save_number_in_cell_data(0, (line, column), data_map, cell_data)
+                elif 1 <= line <= 3 and 4 <= column <= 6:
+                    save_number_in_cell_data(1, (line, column), data_map, cell_data)
+                elif 1 <= line <= 3 and 7 <= column <= 9:
+                    save_number_in_cell_data(2, (line, column), data_map, cell_data)
+                elif 4 <= line <= 6 and 1 <= column <= 3:
+                    save_number_in_cell_data(3, (line, column), data_map, cell_data)
+                elif 4 <= line <= 6 and 4 <= column <= 6:
+                    save_number_in_cell_data(4, (line, column), data_map, cell_data)
+                elif 4 <= line <= 6 and 7 <= column <= 9:
+                    save_number_in_cell_data(5, (line, column), data_map, cell_data)
+                elif 7 <= line <= 9 and 1 <= column <= 3:
+                    save_number_in_cell_data(6, (line, column), data_map, cell_data)
+                elif 7 <= line <= 9 and 4 <= column <= 6:
+                    save_number_in_cell_data(7, (line, column), data_map, cell_data)
+                elif 7 <= line <= 9 and 7 <= column <= 9:
+                    save_number_in_cell_data(8, (line, column), data_map, cell_data)
+
+    return line_data, column_data, cell_data
+
+
+def save_number_in_cell_data(cell_id, cell_coord, data_map, cell_data):
+    """Function of generate_solving_list. Save the number when it's filled"""
+    if not data_map[(cell_coord[0], cell_coord[1])] in cell_data[cell_id]:
+        cell_data[cell_id].append(data_map[cell_coord])
+    return cell_data
